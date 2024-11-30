@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const User = require("./models/user.model.js");
 const taskApp = require("./routes/taskRoutes.js");
-const PORT = process.env.PORT || "";
 
 const dotenv = require("dotenv");
 
@@ -276,8 +275,8 @@ mongoose
   )
   .then(() => {
     console.log("Connected to database!");
-    app.listen(PORT, () => {
-      console.log("Server is running on port ${PORT}");
+    app.listen(5000, () => {
+      console.log("Server is running on port 5000");
     });
   })
   .catch(() => {
