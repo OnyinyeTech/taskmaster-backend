@@ -13,7 +13,14 @@ const taskApp = require("./routes/taskRoutes.js");
 const dotenv = require("dotenv");
 
 const app = express();
-app.use(cors());
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'https://task-master-git-main-azubike-onyinyes-projects.vercel.app', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // List allowed methods
+    credentials: true // If you need cookies/auth headers
+}));
+
 app.use(bodyParser.json());
 
 // Middleware
