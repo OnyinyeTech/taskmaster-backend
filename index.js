@@ -16,7 +16,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'https://task-master-git-main-azubike-onyinyes-projects.vercel.app', // Replace with your frontend URL
+    origin: 'https://task-master-azubike-onyinyes-projects.vercel.app/', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // List allowed methods
     credentials: true // If you need cookies/auth headers
 }));
