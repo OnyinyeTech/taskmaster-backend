@@ -10,7 +10,6 @@ const cors = require("cors");
 const User = require("./models/user.model.js");
 const taskApp = require("./routes/taskRoutes.js");
 
-
 const dotenv = require("dotenv");
 
 const app = express();
@@ -276,8 +275,8 @@ mongoose
   )
   .then(() => {
     console.log("Connected to database!");
-    index.listen(10000, () => {
-      console.log("Server is running on port 10000");
+    app.listen(5000, () => {
+      console.log("Server is running on port 5000");
     });
   })
   .catch(() => {
