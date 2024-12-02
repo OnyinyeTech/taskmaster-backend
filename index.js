@@ -29,7 +29,7 @@ app.use(express.json());
 //  taskroutes
 
 // Get tasks for the logged-in user
-app.get("https://task-master-frontend-three.vercel.app/api/tasks", authenticate, async (req, res) => {
+app.get("/api/tasks", authenticate, async (req, res) => {
   try {
     const tasks = await Task.find({ userId: req.user.id });
     res.status(200).json(tasks);
@@ -62,7 +62,7 @@ app.post("https://task-master-l39serbac-azubike-onyinyes-projects.vercel.app/api
 });
 
 // Delete a task
-app.delete("https://task-master-frontend-three.vercel.app/api/tasks/:id", authenticate, async (req, res) => {
+app.delete("/api/tasks/:id", authenticate, async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({
       _id: req.params.id,
@@ -78,7 +78,7 @@ app.delete("https://task-master-frontend-three.vercel.app/api/tasks/:id", authen
 });
 
 // Update a task
-app.put("https://task-master-frontend-three.vercel.app/api/tasks/:id", async (req, res) => {
+app.put("/api/tasks/:id", async (req, res) => {
   try {
     const taskId = req.params.id;
     const updatedData = req.body; // data sent by client
@@ -99,14 +99,14 @@ app.put("https://task-master-frontend-three.vercel.app/api/tasks/:id", async (re
   }
 });
 
-app.use("https://task-master-frontend-three.vercel.app/", taskApp);
+app.use("/", taskApp);
 
 app.get("/", (req, res) => {
   res.send("Hello from Node API Server updated");
 });
 
 // Search for tasks
-app.get("https://task-master-frontend-three.vercel.app/api/tasks/search", authenticate, async (req, res) => {
+app.get("/api/tasks/search", authenticate, async (req, res) => {
   const userId = req.user.id; // Extract user ID from the authenticated token
   const keyword = req.query.keyword; // Extract the keyword from query parameters
 
@@ -132,7 +132,7 @@ app.get("https://task-master-frontend-three.vercel.app/api/tasks/search", authen
 });
 
 // Filter tasks by priority and date
-app.get("https://task-master-frontend-three.vercel.app/api/tasks/filter", authenticate, async (req, res) => {
+app.get("/api/tasks/filter", authenticate, async (req, res) => {
   try {
     const { userId } = req; // Assuming userId is set by authentication middleware
     const { priority, date } = req.query;
@@ -187,7 +187,7 @@ app.get("https://task-master-frontend-three.vercel.app/api/tasks/filter", authen
 });
 
 // Generic task ID route defined later
-app.get("https://task-master-frontend-three.vercel.app/api/tasks/:id", authenticate, async (req, res) => {
+app.get("/api/tasks/:id", authenticate, async (req, res) => {
   const taskId = req.params.id;
   const userId = req.user.id;
 
@@ -206,7 +206,7 @@ app.get("https://task-master-frontend-three.vercel.app/api/tasks/:id", authentic
 // user Routes
 
 // Registration Route
-app.post("https://task-master-frontend-three.vercel.app/api/signup", async (req, res) => {
+app.post("/api/signup", async (req, res) => {
   const { name, phone, dob, password, cpwd } = req.body;
 
   // Validate input
@@ -240,7 +240,7 @@ app.post("https://task-master-frontend-three.vercel.app/api/signup", async (req,
 });
 
 // Login Route
-app.post("https://task-master-frontend-three.vercel.app/api/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   const { phone, password } = req.body;
 
   // Validate input
